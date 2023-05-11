@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'my-secret-key';
-const course = require('../models/course')
 const expert = require('../models/expert')
 const skill = require('../models/Skill')
 
@@ -58,7 +57,8 @@ const login = async (req, res) => {
 const allUsers = async (req, res) => {
   try {
     const users = await user.find();
-    return res.json(users);
+    //return res.json(users);
+    res.status(200).json(users);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Server error' });
@@ -82,28 +82,6 @@ const deleteUser = async (req, res) => {
 }
 
 
-//create course table
-const createCourse = async (req, res) => {
-  const { name, universities } = req.body;
-  try {
-    const courses = new course({ name, universities });
-    await courses.save();
-    res.status(201).json({ message: 'Course added successfully', courses });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-};
-
-//getallusers
-const displayCourse = async (req, res) => {
-  try {
-    const courses = await course.find();
-    return res.json(courses);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: 'Server error' });
-  }
-};
 
 //addExperttable
 const addExpert = async (req, res) => {
@@ -190,7 +168,6 @@ const deleteSkill = async (req, res) => {
 module.exports = {
     createAdmin, login, 
     allUsers, deleteUser, 
-    createCourse, displayCourse, 
     addExpert, deleteExpert, displayExpert,
     addSkill, displaySkill, deleteSkill
 }

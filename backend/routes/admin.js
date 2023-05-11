@@ -3,15 +3,14 @@ const router = express.Router();
 const Admin = require('../models/Admin')
 const { authenticate } = require('../middlewares/adminauth')
 const { login, addSkill, displaySkill, deleteSkill, displayExpert } = require('../controllers/adminController')
-const { allUsers, displayCourse, createAdmin, deleteUser, createCourse, addExpert, deleteExpert } = require('../controllers/adminController')
+const { allUsers,  createAdmin, deleteUser,  addExpert, deleteExpert } = require('../controllers/adminController')
 
 //post a new workout
 router.post('/addadmin', createAdmin)
 router.post('/login', login)
 router.get('/getallusers', authenticate, allUsers)
 router.delete('/deleteuser/:id',authenticate,deleteUser)
-router.post('/createcourse',authenticate,createCourse)
-router.get('/displaycourses',authenticate,displayCourse)
+
 
 router.post('/addexpert',authenticate,addExpert)
 router.get('/displayexpert',authenticate,displayExpert)
