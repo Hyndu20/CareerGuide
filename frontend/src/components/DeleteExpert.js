@@ -39,7 +39,7 @@ const DeleteExperts = () => {
       <div className="pl-12">
       <div className="text-6xl font-bold pb-12 pt-3 text-center">Delete Experts</div>
       <div className="grid grid-cols-2 gap-4">
-        {experts.map(experts => (
+        { experts && experts.map(experts => (
           <div key={experts._id} class="text-center max-w-sm rounded-lg border border-gray-200 shadow-xl">
             <div class="bg-gray-400 pl-10 rounded-md shadow-2xl rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
               <div class="text-sm text-left text-black pl-10">
