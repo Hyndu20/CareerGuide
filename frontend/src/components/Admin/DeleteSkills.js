@@ -1,10 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Adminsidebar from "./Adminslidebar";
-import { DeleteSkill, AllSkills } from "../actions";
+import { DeleteSkill, AllSkills } from "../../actions";
+import { ToastContainer, toast } from "react-toastify";
 
 const DeleteSkills = () => {
     const [skills, setSkills] = useState([]);
+    const notify = (message) => {
+      toast(message);
+    };
   
     useEffect(() => {
       const FetchData = async () => {
@@ -25,16 +28,22 @@ const DeleteSkills = () => {
         console.log(name);
         const response = await DeleteSkill(name);
         console.log(response);
+        if(response.data.message === "Skills deleted successfully")
+        {
+          notify("Skill Deleted");
+        }
        setSkills(skills.filter(skills => skills.name !== name));
           
           
      } catch (error) {
        console.log(error);
+       notify("Something went wrong");
      }
     };
   
     return (
       <div className="pl-12">
+        <ToastContainer />
       <div className="text-6xl font-bold pb-12 pt-3 text-center">Delete Skills</div>
       <div className="grid grid-cols-2 gap-4">
         {skills.map(skill => (

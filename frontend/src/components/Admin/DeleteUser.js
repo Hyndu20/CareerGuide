@@ -1,17 +1,21 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Adminsidebar from "./Adminslidebar";
-import { AllUsers } from "../actions";
-import { DeleteUser } from "../actions";
+import { AllUsers } from "../../actions";
+import { DeleteUser } from "../../actions";
+import { ToastContainer, toast } from "react-toastify";
 
 const DeleteUsers = () => {
     const [users, setUsers] = useState([]);
+    const notify = (message) => {
+      toast(message);
+    };
   
     useEffect(() => {
       const fetchData = async () => {
         try {
           const response = await AllUsers();
           setUsers(response);
+          console.log(response);
           console.log(users)
         } catch (error) {
           console.log(error);
@@ -26,16 +30,22 @@ const DeleteUsers = () => {
         console.log(userId);
         const response = await DeleteUser(userId);
         console.log(response);
-       setUsers(users.filter(user => user._id !== userId));
+        if(response.data.message === "User deleted successfully")
+        {
+          notify("User Deleted Successfully");
+        }
+        setUsers(users.filter(user => user._id !== userId));
           
           
      } catch (error) {
        console.log(error);
+       notify("Something went wrong");
      }
     };
   
     return (
       <div className="pl-12">
+         <ToastContainer />
       <div className="text-6xl font-bold pb-12 pt-3 text-center">Delete Users</div>
       <div className="grid grid-cols-2 gap-4">
         {users.map(user => (

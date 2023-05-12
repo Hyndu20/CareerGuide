@@ -1,11 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Adminsidebar from "./Adminslidebar";
-import { AllExperts } from "../actions";
-import { DeleteExpert } from "../actions";
+import { AllExperts } from "../../actions";
+import { DeleteExpert } from "../../actions";
+import { ToastContainer, toast } from "react-toastify";
 
 const DeleteExperts = () => {
     const [experts, setExperts] = useState([]);
+    const notify = (message) => {
+      toast(message);
+    };
   
     useEffect(() => {
       const fetchData = async () => {
@@ -27,16 +30,21 @@ const DeleteExperts = () => {
         console.log(title);
         const response = await DeleteExpert(title);
         console.log(response);
+        if(response.data.message=="Expert deleted successfully"){
+        notify("Expert Deleted Successfully");
+        }
        setExperts(experts.filter(experts => experts._id !== id));
           
           
      } catch (error) {
        console.log(error);
+       notify("Sometihng went wrong")
      }
     };
   
     return (
       <div className="pl-12">
+        <ToastContainer />
       <div className="text-6xl font-bold pb-12 pt-3 text-center">Delete Experts</div>
       <div className="grid grid-cols-2 gap-4">
         { experts && experts.map(experts => (

@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Adminsidebar from "./Adminslidebar";
-import { AllUsers } from "../actions";
+import { AllUsers } from "../../actions";
 
 const DisplayUsers = () => {
       const [users, setUsers] = useState([]);
@@ -11,7 +10,6 @@ const DisplayUsers = () => {
             try {
               const response = await AllUsers();
               console.log(response)
-              //console.log(response.data)
               setUsers(response);
             } catch (error) {
               console.log(error);

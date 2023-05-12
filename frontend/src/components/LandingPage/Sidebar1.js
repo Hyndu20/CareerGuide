@@ -50,6 +50,15 @@ const Sidebar1 = () => {
                     </div>
 
                     <ul class="space-y-2 tracking-wide mt-8">
+                    <li>
+                        <button onClick={() => setActive("UserHome")} className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M18 9v9H2v-9H0l10-9 10 9h-2zM5 10a1 1 0 00-1 1v6h2v-6a1 1 0 00-1-1zm4 0a1 1 0 00-1 1v6h2v-6a1 1 0 00-1-1zm6 0a1 1 0 00-1 1v6h2v-6a1 1 0 00-1-1z"/>
+                            </svg>
+                            <span class="group-hover:text-gray-700">Home</span>
+                        </button>
+                        </li>
+
 
                         <li>
                             <button onClick={() => setActive("profile")} className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">

@@ -37,9 +37,9 @@ import Nursing from './pages/science/Nursing';
 import Pharmacy from './pages/science/Pharmacy';
 import Technology from './pages/science/Technology';
 import UPSC from './pages/commerce/UPSC';
-import AdminDashboard from './components/AdminDashboard'
+import AdminDashboard from './components/Admin/AdminDashboard'
 import UserDashboard from './components/UserDashboard'
-import AdminSlidebarActions from './components/AdminSlidebarActions';
+import AdminSlidebarActions from './components/Admin/AdminSlidebarActions';
 import Addrecommendedskill from './components/addrecommendedskill';
 import History from './pages/humanities/History';
 import Literature from './pages/humanities/Literature';

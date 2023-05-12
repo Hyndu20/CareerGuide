@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import Adminsidebar from "./Adminslidebar";
-import { AllSkills } from "../actions";
-import { DeleteUser } from "../actions";
-import "../pages/Auth.css"
+import { AllSkills } from "../../actions";
+import { DeleteUser } from "../../actions";
+import "../../pages/Auth.css"
 
 const DisplaySkills = () => {
     const [skills, setSkills] = useState([]);

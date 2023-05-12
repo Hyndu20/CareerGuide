@@ -1,24 +1,23 @@
 import React from "react";
-import ShowRoadmap from '../components/Roadmaps/RoadmapTemplate';
-import AdminSlidebarActions from '../components/AdminSlidebarActions';
-import DeleteUsers from '../components/DeleteUser';
+import AdminSlidebarActions from './AdminSlidebarActions';
+import DeleteUsers from './DeleteUser';
 import { useState } from "react";
 import {Navigate, useLocation} from "react-router-dom";
 import DisplaySkills from "./DisplaySkills";
 import DeleteSkills from "./DeleteSkills";
 import AddSkills from "./AddSkills";
-import { AllUsers } from "../actions";
 import AddExperts from "./AddExpert";
 import DeleteExperts from "./DeleteExpert";
+import Home from "./Home";
+
 
 const Adminsidebar=()=>{
 
-    const [active, setActive] = useState("");
+    const [active, setActive] = useState("Home");
     const location = useLocation();
-    //const auth = location.state.auth;
-      const [auth, setAuth] = useState(true);
-      const [display, setDisplay] = useState(false);
-      console.log(auth)
+    const [auth, setAuth] = useState(true);
+    const [display, setDisplay] = useState(false);
+    //console.log(auth)
       
     const HandleLogout = () => {
           console.log("auth")
@@ -38,7 +37,6 @@ const Adminsidebar=()=>{
             <aside class="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-gray transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
                 <div>
                     <div className='p-3 flex text-4xl font-bold  text-gray-600 py-1 ml-0 mt-2 rounded-full'>
-                        {/* <img className="w-10" src={logo} alt="logo" /> */}
                         <span className="pl-3">CareerGuide</span>
                     </div>
 
@@ -72,7 +70,6 @@ const Adminsidebar=()=>{
                                     Delete Skills
                                     </button>
                         </li>
-
                         <li>
                         <button onClick={() => setActive("displayUsers")}  class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -108,14 +105,8 @@ const Adminsidebar=()=>{
                                    Delete Expert Guidance
                                     </button>
                         </li>
-
-
-
-                     
-                       
-                    </ul>
+                        </ul>
                 </div>
-
                 <div class="px-6 -mx-6 pt-4 flex justify-between items-center border-t">
                     <button  onClick = {HandleLogout} class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -130,25 +121,29 @@ const Adminsidebar=()=>{
                 <div class="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
                     <div class="px-6 flex items-center justify-between space-x-4 2xl:container">
                     <div style={{float: 'right'}}>
-                    <h4
-  hidden
-  className="text-2xl text-gray-600 font-medium lg:block text-center py-4"
-  style={{
-    borderRadius: "50px",
-    width: "200px",
-    position: "absolute",
-    right: "0",
-    marginRight: "50px",
-  }}
->
-  Dashboard
-</h4>
+                    <h7
+                    hidden
+                    className="text-2xl text-gray-600 font-medium lg:block text-center py-4"
+                    style={{
+                    borderRadius: "50px",
+                    width: "200px",
+                    position: "absolute",
+                    right: "0",
+                    marginRight: "50px",
+                    }}
+                    >
+                    <button onClick={() => setActive("Home")} 
+                    style={{ backgroundColor: "gray", color: "white", borderRadius: '5px',height: "30px" }}>
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 3.5L3.5 9v7.5h4v-4h5v4h4V9L10 3.5zM7 17.5v-5h6v5h5V9.44L10 4.22 2 9.44V17.5h5z" />
+                        </svg>
 
-</div>
-
-
-
-                        <button class="w-12 h-16 -mr-2 border-r lg:hidden">
+                    </button>
+                    </h7>
+                    
+                    </div>
+                      <button class="w-12 h-16 -mr-2 border-r lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 my-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
@@ -191,29 +186,11 @@ const Adminsidebar=()=>{
                         <DeleteExperts />
                     </div>
                 }
-                
-
-                {/*active === "quiz" &&
+                {active === "Home" &&
                     <div className="px-6 pt-6 2xl:container">
-                        <Card >
-                            Attempt Quiz
-                        </Card>
+                     <Home />
                     </div>
                 }
-                {active === "plan" &&
-                    <div className="px-6 pt-6 2xl:container">
-                        <Card >
-                            My Plan
-                        </Card>
-                    </div>
-                }
-                {active === "report" &&
-                    <div className="px-6 pt-6 2xl:container">
-                        <Card >
-                            My Report
-                        </Card>
-                    </div>
-                } */}
             </div>
          </div>
 

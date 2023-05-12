@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AddSkill } from "../actions";
+import { AddSkill } from "../../actions";
 import { ToastContainer, toast } from "react-toastify";
 
 const AddSkills = () => {
@@ -47,6 +47,7 @@ const AddSkills = () => {
 
   return (
     <div className="relative w-full h-[800px]">
+      <ToastContainer />
       <div className="text-center pt-8">
         <div className="text-6xl font-bold pb-12 pt-3">Add Skill</div>
       </div>
