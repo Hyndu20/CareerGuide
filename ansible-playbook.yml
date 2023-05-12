@@ -22,9 +22,9 @@
     - name: Copy Docker Compose file to host
       copy:
         src: /var/lib/jenkins/workspace/test_project/docker-compose.yaml
-        dest: /project/docker-compose.yml
+        dest: /docker-compose.yml
 
     - name: Start Docker Compose stack
       command: docker-compose up -d
       args:
-        chdir: /project/
+        chdir: /
