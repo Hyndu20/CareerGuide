@@ -1,13 +1,10 @@
-import { Card } from '@material-tailwind/react';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Sidebar1 from '../../components/LandingPage/Sidebar1'
+import React from 'react';
 import '../../components/Roadmaps/Roadmap.css'
 
 const Nursing = () => {
   return (
     <div className=''>
-      <Sidebar1 />
+      
       <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
         
       <div className='w-full h-[700px] bg-gradient-to-r from-transparent to-black absolute'>
@@ -19,7 +16,7 @@ const Nursing = () => {
 
 <div className="flex relative justify-end z-20 h-screen ">
 <div className="p-10 text-left mr-5">
-  <div className="text-5xl text-white">
+  <div className="text-5xl text-black">
     <div className="">Nursing</div>
     
   </div>

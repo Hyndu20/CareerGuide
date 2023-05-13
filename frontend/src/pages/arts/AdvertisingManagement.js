@@ -1,13 +1,9 @@
-import { Card } from '@material-tailwind/react';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Sidebar1 from '../../components/LandingPage/Sidebar1'
+import React from 'react';
 import '../../components/Roadmaps/Roadmap.css'
 
 const AdvertisingManagement = () => {
   return (
     <div className=''>
-      <Sidebar1 />
       <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
         
       <div className='w-full h-[700px] bg-gradient-to-r from-transparent to-black absolute'>
@@ -63,12 +59,8 @@ The course may cover a range of topics such as consumer behavior, marketing rese
   </div>
 </div>
 </div>
-            
-             
-              
-            </div>
-            
-          </div>
+  </div>
+  </div>
           
     
    

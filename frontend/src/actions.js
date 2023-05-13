@@ -29,8 +29,8 @@ export const AdminLoginval = async(data)  => {
         console.log("action login")
       
       const res = await axios.post("http://localhost:5000/user/userlogin", data);
-      console.log(res.message);
-      console.log(res.status);
+      console.log(res);
+      console.log(res);
       return res;
     } catch (error) {
      console.log(error)
@@ -174,3 +174,21 @@ export const AllExperts = async () => {
     console.error(error);
   }
 };
+
+export const ExpertsConnect = async () => {
+  const token = localStorage.getItem('user_token');
+
+  try {
+    const response = await axios.get("http://localhost:5000/user/expertconnect", {
+      headers: {
+        'x-access-token': token
+      }
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+

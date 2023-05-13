@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from '../LandingPage/Navbar'
 import { ToastContainer, toast } from "react-toastify";
 import { Loginval } from "../../actions";
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,7 +23,9 @@ export default function Login({ setAuthState }) {
       console.log(response);
           if(response.data.message === "User Logged in successfully" && response.data.token !== ""){
                 notify("Login Successful")
-                localStorage.setItem('token_user',response.data.token);
+                localStorage.setItem('user_token',response.data.token);
+                const myObject = JSON.stringify(response.data.foundUser);
+                localStorage.setItem('LoggedInuser',myObject);
                 setLoginAuth(true);
                 console.log(response.data.token)
                 
