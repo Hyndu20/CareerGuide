@@ -1,5 +1,5 @@
 const user = require('../models/User')
-
+const expert = require('../models/expert');
 const mongoose = require('mongoose');
 const skill = require('../models/Skill');
 const bcrypt = require('bcrypt');
@@ -51,7 +51,7 @@ const createUser = async (req, res) => {
         expiresIn: '1h',
       });
   
-      res.status(200).json({ message: 'User Logged in successfully', token });
+      res.status(200).json({ message: 'User Logged in successfully', token , foundUser});
     } catch (error) {
       console.log(error);
       res.status(500).json({ error: 'Internal server error' });
@@ -105,6 +105,17 @@ const displaySkill = async (req, res) => {
   }
 };
 
+//getallexperts
+const displayExpert = async (req, res) => {
+  try {
+    const disexperts = await expert.find();
+    return res.json(disexperts);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 
   
 //getcoursebyname
@@ -141,5 +152,5 @@ const displaySkill = async (req, res) => {
 
   
 module.exports = {
-    createUser, login, userbyId, updateUserById, displaySkill
+    createUser, login, userbyId, updateUserById, displaySkill, displayExpert
 }
