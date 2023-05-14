@@ -32,9 +32,7 @@ pipeline {
 				steps {
 					sh '''
 							cd frontend
-						    npm ci
 							npm test
-                            a
 					    '''
 				}
 			}
