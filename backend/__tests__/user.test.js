@@ -1,9 +1,7 @@
-const { createAdmin, login, deleteUser } = require('../controllers/adminController');
-const { createUser, displaySkill } = require('../controllers/userController');
-const adminModel = require('../models/Admin');
-const { allUsers } = require('../controllers/adminController');
+const { createUser, displaySkill, displayExpert } = require('../controllers/userController');
 const skilld = require('../models/Skill');
 const userModel = require('../models/User');
+const expert = require('../models/expert')
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'my-secret-key';
 const bcrypt = require('bcrypt');
@@ -164,4 +162,10 @@ describe('createUser', () => {
       
   
 })
+
+
+
+
+
+
   

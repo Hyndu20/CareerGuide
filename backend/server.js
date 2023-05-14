@@ -14,17 +14,28 @@ app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
   
-
-  const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.combine(
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.json()
   ),
   transports: [
-    new winston.transports.File({ filename: 'logs/access.log' })
+    new winston.transports.File({ filename: 'logs/access.log' }),
+    new winston.transports.Console()
   ]
 });
+
+//   const logger = winston.createLogger({
+//     level: 'info',
+//     format: winston.format.combine(
+//     winston.format.timestamp(),
+//     winston.format.json()
+//   ),
+//   transports: [
+//     new winston.transports.File({ filename: 'logs/access.log' })
+//   ]
+// });
 app.use((req, res, next) => {
     logger.info(`${req.method},${req.path} - ${req.ip}`);
     console.log(req.path, req.method);
@@ -44,7 +55,7 @@ app.use('/user', userRoutes)
 
 
 //mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://test:test@cluster0.l69p7lc.mongodb.net/?retryWrites=true&w=majority',{ useNewUrlParser: false,  useUnifiedTopology: false })
+mongoose.connect('mongodb+srv://hyndhu_test:baba@cluster0.l69p7lc.mongodb.net/?retryWrites=true&w=majority',{ useNewUrlParser: false,  useUnifiedTopology: false })
     .then(() => {
 
       console.log( 'Database Connected' );

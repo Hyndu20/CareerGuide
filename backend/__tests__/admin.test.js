@@ -1,11 +1,14 @@
 const { createAdmin, login, deleteUser } = require('../controllers/adminController');
 const adminModel = require('../models/Admin');
-const { allUsers } = require('../controllers/adminController');
+const { allUsers, displaySkill, deleteSkill } = require('../controllers/adminController');
 const userModel = require('../models/User');
+const skilld = require('../models/Skill')
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'my-secret-key';
 const bcrypt = require('bcrypt');
 
+
+//Testcase for admin create
 describe('createAdmin', () => {
   it('should create an admin', async () => {
     const req = {
@@ -56,6 +59,9 @@ describe('createAdmin', () => {
   });
 });
 
+
+
+//Testcase for admin login
 describe('login', () => {
     it('should return 200 status with token when valid credentials are provided', async () => {
       const req = {
@@ -87,7 +93,7 @@ describe('login', () => {
     });
   });  
 
-
+//TESTCASE TO DISPLAY ALL USERS
 describe('allUsers', () => {
     it('should return all users when token is valid', async () => {
       // Mock request with a valid token in the header
@@ -151,6 +157,9 @@ describe('allUsers', () => {
     });
   });
 
+
+
+  //TESTCASE TO DELETE USERS
   describe('deleteUser', () => {
     it('should delete user and return 200 status when given a valid user id', async () => {
       // Mock the request object with a valid user id
@@ -251,6 +260,104 @@ describe('allUsers', () => {
       expect(res.json).toHaveBeenCalledWith({ message: 'Server error' });
     });
   });
+
+  describe('displaySkill', () => {
+       
+    it('should return all skills', async () => {
+        const token = jwt.sign({ id: 'someuserid' }, JWT_SECRET);
+        const req = {
+          headers: {
+              'x-access-token': token
+            },
+          params: {
+            id: 'validuserid'
+          }
+        };
+      const res = {
+        json: jest.fn(),
+      };
+      const mockSkills = [
+        {
+            "_id": "",
+            "name": "",
+            "skills": [
+                {
+                    "name": "",
+                    "_id": ""
+                },
+                {
+                    "name": "",
+                    "_id": ""
+                },
+                {
+                    "name": "",
+                    "_id": ""
+                },
+                {
+                    "name": "",
+                    "_id": ""
+                }
+            ],
+            "createdAt": "",
+            "updatedAt": "",
+            "__v": 0
+        }];
+      skilld.find = jest.fn().mockResolvedValue(mockSkills);
+  
+      await displaySkill(req, res);
+  
+      expect(skilld.find).toHaveBeenCalled();
+      expect(res.json).toHaveBeenCalledWith(mockSkills);
+    });
+  
+    it('should return an error message when there is a server error', async () => {
+        const token = jwt.sign({ id: 'someuserid' }, JWT_SECRET);
+      const req = {
+        headers: {
+            'x-access-token': token
+          },
+        params: {
+          id: 'validuserid'
+        }
+      };
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+      skilld.find = jest.fn().mockRejectedValue(new Error('Server error'));
+  
+      await displaySkill(req, res);
+  
+      expect(skilld.find).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalledWith(500);
+      expect(res.json).toHaveBeenCalledWith({ message: 'Server error' });
+    });
+  });
   
 
 
+  describe('deleteSkill', () => {
+    it('should delete a skill', async () => {
+      const req = {
+        params: {
+          name: 'Skill 1'
+        }
+      };
+      const res = {
+        json: jest.fn()
+      };
+      const deletedSkill = {
+        _id: 'someid',
+        name: 'Skill 1',
+        skills: ['JavaScript', 'React']
+      };
+      skilld.findOneAndDelete = jest.fn().mockResolvedValue(deletedSkill);
+  
+      await deleteSkill(req, res);
+  
+      expect(skilld.findOneAndDelete).toHaveBeenCalledWith({ name: 'Skill 1' });
+      expect(res.json).toHaveBeenCalledWith({ message: 'Skills deleted successfully' });
+    });
+  
+  })
+  
