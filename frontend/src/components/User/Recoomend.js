@@ -240,7 +240,9 @@ const Recommendedroute=()=> {
 
   return (
     <div>
-      <h1>Select your skills:</h1>
+      <div align= "center">
+      <h1> <h3 class="hidden mt-4 text-4xl font-bold text-gray-600 lg:block">SELECT YOUR SKILLS</h3></h1>
+      </div>
       <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexWrap: 'wrap' }}>
         {Object.keys(skillCheckboxes).map(skill => (
           <label key={skill} style={{ width: '33.33%', boxSizing: 'border-box', padding: '5px', margin: '10px 0' }}>
