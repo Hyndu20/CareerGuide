@@ -1,4 +1,5 @@
-import axios from "axios";
+//import axios from "axios";
+const axios = require('axios');
 export const AdminLoginval = async(data)  => {
     try {
         console.log("action")

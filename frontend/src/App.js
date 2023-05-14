@@ -10,7 +10,9 @@ import AdminDashboard from './components/Admin/AdminDashboard'
 
 function App() {
   return (
+    <div data-testid="app">
   <BrowserRouter>
+      <div data-testid="home">
       <Routes>
         
         <Route path="/" element={<Home />} />
@@ -20,9 +22,12 @@ function App() {
         <Route path="/adminDashboard" element={<AdminDashboard />}/>
         <Route path="/weGuide" element={<WeGuide />} />
         </Routes>
+        </div>
     </BrowserRouter>
+    </div>
   );
 }
+
 
 
 export default App;
