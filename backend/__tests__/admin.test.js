@@ -87,7 +87,7 @@ describe('login', () => {
   
       expect(adminModel.findOne).toHaveBeenCalledWith({ email: 'testadmin@example.com' });
       expect(bcrypt.compare).toHaveBeenCalledWith('testpassword', foundAdmin.password);
-      expect(jwt.sign).toHaveBeenCalledWith({ adminId: 'someadminid' }, JWT_SECRET, { expiresIn: '1h' });
+      expect(jwt.sign).toHaveBeenCalledWith({ adminId: 'someadminid' }, JWT_SECRET, { expiresIn: '5h' });
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith({ message: 'Logged in successfully', token: 'sometoken' });
     });
