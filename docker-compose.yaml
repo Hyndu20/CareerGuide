@@ -2,7 +2,6 @@ services:
   frontend:
     image: hyndhu/frontend:latest
     container_name: frontend
-    stdin_open: true
     ports:
       - "3000:3000"
     networks:
@@ -17,8 +16,6 @@ services:
     networks:
       career:
         ipv4_address: 172.28.2.7
-    volumes:
-      - ./backend/logs:/logs/
     
 networks:
   career:
