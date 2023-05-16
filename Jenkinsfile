@@ -70,8 +70,8 @@ pipeline {
         
 			stage('Removing Docker Images from Local') {
 				steps {
-					sh "docker rmi $DOCKERHUB_REGISTRY/frontend:latest"
-					sh "docker rmi $DOCKERHUB_REGISTRY/backend:latest"
+					sh "docker rmi -f $DOCKERHUB_REGISTRY/frontend:latest"
+					sh "docker rmi -f $DOCKERHUB_REGISTRY/backend:latest"
 				}
 			}
         
