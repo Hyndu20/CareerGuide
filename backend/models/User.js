@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
       },
       qualification: {
         type: String,
-        required: true
+        //required: true
       },
       school_clz: {
         type: String,

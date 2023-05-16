@@ -97,11 +97,11 @@ export default function SignUp({ setAuthState }) {
 
                     <input class="block border border-grey-light w-full p-3 rounded mb-4"
                     type="date"
-                    placeholder="MM/DD/YYYY"
+                    //placeholder="MM/DD/YYYY"
                     name="dob"
-                    value="dob"
+                    value={data.dob}
                     onChange={changeHandler}
-                    //required
+                    required
                     />
                     <input
                         type="text"

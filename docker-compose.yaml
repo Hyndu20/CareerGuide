@@ -17,6 +17,8 @@ services:
     networks:
       career:
         ipv4_address: 172.28.2.7
+    volumes:
+      - ./backend/logs:/logs/
     
 networks:
   career:

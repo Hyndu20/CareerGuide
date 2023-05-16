@@ -7,8 +7,6 @@ const JWT_SECRET = 'my-secret-key';
 const expert = require('../models/expert')
 const skill = require('../models/Skill')
 
-
-
 //create
 const createAdmin = async (req, res) => {
   const { name, email, password } = req.body;
@@ -42,7 +40,7 @@ const login = async (req, res) => {
 
     // Generate a JWT token and send it in the response
     const token = jwt.sign({ adminId: foundAdmin._id }, JWT_SECRET, {
-      expiresIn: '1h',
+      expiresIn: '5h',
     });
 
     res.status(200).json({ message: 'Logged in successfully', token });
